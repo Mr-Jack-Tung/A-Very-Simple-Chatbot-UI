@@ -7,6 +7,10 @@
 ## Run
 - 1/ ollama run qwen2
 - 2/ litellm --model ollama_chat/qwen2
-- 3/ open file: A very simple Chatbot UI with LiteLLM and Ollama _ 21Jun2024.html
+- 3/ open file with browser: A very simple Chatbot UI with LiteLLM and Ollama _ 21Jun2024.html
+
+## Reference:
+- https://ollama.com/library/qwen2
+- https://docs.litellm.ai/docs/
 
 ![alt-text](https://github.com/Mr-Jack-Tung/A-Very-Simple-Chatbot-UI/blob/main/Screenshot%202024-06-21%20_%203.jpg)
