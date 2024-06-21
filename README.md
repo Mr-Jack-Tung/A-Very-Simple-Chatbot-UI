@@ -12,5 +12,6 @@
 ## Reference:
 - https://ollama.com/library/qwen2
 - https://docs.litellm.ai/docs/
+- https://www.w3schools.com/xml/xml_http.asp
 
 ![alt-text](https://github.com/Mr-Jack-Tung/A-Very-Simple-Chatbot-UI/blob/main/Screenshot%202024-06-21%20_%203.jpg)
