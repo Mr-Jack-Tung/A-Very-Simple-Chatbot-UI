@@ -16,11 +16,21 @@
     .chat-container {
         max-width: 600px;
         margin: 0 auto;
-        background-color: #fff;
+/*         background-color: #fff; */
         border: 1px solid #eee;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         overflow: hidden;
+        background: repeating-linear-gradient(
+            45deg,
+
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05) 10px,
+
+            rgba(0, 0, 0, 0.1) 10px,
+            rgba(0, 0, 0, 0.1) 20px
+        ),
+        #F7F9F2;
     }
 
     .chat-header {
@@ -102,7 +112,7 @@
             <!-- Messages will be added dynamically here -->
         </div>
         <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="Type a message..." onkeypress="input_enter(event)">
+            <input type="text" id="messageInput" placeholder=">>> Type a message..." onkeypress="input_enter(event)">
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
