@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Very Simple Chat UI</title>
+<style>
+    /* Basic CSS for chat container and messages */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .chat-container {
+        max-width: 500px;
+        margin: 0 auto;
+/*         background-color: #fff; */
+        border: 1px solid #eee;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        background: repeating-linear-gradient(
+            45deg,
+
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05) 10px,
+
+            rgba(0, 0, 0, 0.1) 10px,
+            rgba(0, 0, 0, 0.1) 20px
+        ),
+        #F7F9F2;
+    }
+
+    .chat-header {
+        background-color: #F19ED2;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .chat-messages {
+        padding: 20px;
+        overflow-y: scroll;
+        max-height: 600px;
+    }
+
+    .message {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+
+    .message.user {
+        background-color: #91DDCF;
+        color: #666;
+        text-align: right;
+    }
+
+    .message.bot {
+        background-color: #E8C5E5;
+        color: #666;
+    }
+
+    .message-content {
+        word-wrap: break-word;
+    }
+
+    .message .timestamp {
+        font-size: 11px;
+        color: #666;
+        margin-top: 5px;
+        text-align: right;
+    }
+
+    .chat-input {
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #91DDCF;
+    }
+
+    .chat-input input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .chat-input button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">A Very simple Chat Bot with Memory _ Mr. Jack</div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be added dynamically here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder=">>> Type a message..." onkeypress="input_enter(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function input_enter(e){
+            if(e.keyCode === 13){ // Enter keycode
+                e.preventDefault(); // Ensure it is only this code that runs
+                // alert("Enter was pressed was presses");
+                sendMessage()
+            }
+        }
+
+        function displayMessage(sender, content) {
+            var chatMessages = document.getElementById('chat-messages');
+
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender === 'user' ? 'user' : 'bot');
+            
+            var messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            messageContent.innerText = content;
+            
+            var timestamp = document.createElement('div');
+            timestamp.classList.add('timestamp');
+            timestamp.innerText = new Date().toLocaleTimeString('en-US', { hour12: false });
+            
+            messageElement.appendChild(messageContent);
+            messageElement.appendChild(timestamp);
+            
+            chatMessages.appendChild(messageElement);
+            
+            // Scroll to bottom of chat messages
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        let history = new Array();
+
+        function sendMessage() {
+            var messageInput = document.getElementById('messageInput');
+            var message = messageInput.value.trim();
+
+            let time_stamp = new Date().toLocaleTimeString('en-US', { hour12: false });
+            if(history.length <= 3) {
+                history.push("# user(" + time_stamp + "): " + message);
+
+            } else {
+                history.shift();
+                history.push("# user(" + time_stamp + "): " + message);
+            };
+
+            // console.log(history);
+            
+            if (message !== '') {
+                displayMessage('user', message);
+                
+                var xhr = new XMLHttpRequest();
+
+                // using Ollama Qwen2 ~> https://ollama.com/library/qwen2
+                // using LiteLLM ~> https://docs.litellm.ai/docs/proxy/quick_start#run-proxy-with-config
+                // var url = 'http://0.0.0.0:4000/chat/completions'; 
+                var url = 'http://localhost:4000/chat/completions';
+
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+
+                // Example: Add authentication token header
+                // xhr.setRequestHeader('Authorization', 'Bearer your_access_token_here');
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var response = xhr.responseText;
+                            // Assuming the response is JSON, you can parse it
+                            var data = JSON.parse(response);
+                            // Handle the data or do something with it
+
+                            // console.log(data);
+                            // alert(data.choices[0].message.content) //~> Chào bạn! Tôi có thể giúp gì cho bạn hôm nay?
+
+                            bot_message = data.choices[0].message.content
+
+                            // Simulate bot response (replace with actual API call)
+                            setTimeout(function() {
+                                displayMessage('bot', bot_message);
+
+                                let time_stamp = new Date().toLocaleTimeString('en-US', { hour12: false });
+                                if(history.length <= 3) {
+                                    history.push("# bot(" + time_stamp + "): " + bot_message);
+
+                                } else {
+                                    history.shift();
+                                    history.push("# bot(" + time_stamp + "): " + bot_message);
+                                };
+
+                                // console.log(history);
+
+                            }, 500);
+
+                        } else {
+                            console.error('Request failed. Status:', xhr.status);
+                        }
+                    }
+                };
+
+                var messageData = {
+                    "model": "ollama/qwen2",
+                    "messages": [
+                    {
+                        "role": "user",
+                        "content": "### context: \n" + history + "\n\n### new message: \n" + message
+                    }
+                    ],
+                    "stream": false
+                };
+
+                xhr.send(JSON.stringify(messageData));
+
+                messageInput.value = '';
+
+            }
+
+        }
+    </script>
+</body>
+</html>
