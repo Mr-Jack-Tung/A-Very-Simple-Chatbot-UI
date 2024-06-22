@@ -15,3 +15,9 @@
 - https://www.w3schools.com/xml/xml_http.asp
 
 ![alt-text](https://github.com/Mr-Jack-Tung/A-Very-Simple-Chatbot-UI/blob/main/Screenshot%202024-06-21%20_%203.jpg)
+
+### Update Jun 23, 2024: Chatbot with Memory
+
+![alt-text]()
+
+
