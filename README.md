@@ -5,7 +5,7 @@
 "... Qwen2 is trained on data in 29 languages, including English and Chinese. In the 7B models, context length has been extended to 128k tokens." ~> Điều đó có nghĩa là bạn có thể nói chuyện với em chatbot UI tí xíu và rất đơn giản này bằng 29 ngôn ngữ trong đó có tiếng Anh , tiếng Trung và đặc biệt là tiếng Việt cũng rất tốt nhé ^^
 
 ## Run
-- 1/ ollama run qwen2
+- 1/ ollama pull qwen2
 - 2/ litellm --model ollama_chat/qwen2
 - 3/ open file with browser: A very simple Chatbot UI with LiteLLM and Ollama _ 21Jun2024.html
 
