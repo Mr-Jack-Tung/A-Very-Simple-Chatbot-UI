@@ -14,10 +14,14 @@
 - https://docs.litellm.ai/docs/
 - https://www.w3schools.com/xml/xml_http.asp
 
-![alt-text](https://github.com/Mr-Jack-Tung/A-Very-Simple-Chatbot-UI/blob/main/Screenshot%202024-06-21%20_%203.jpg)
-
 ### Update Jun 23, 2024: Chatbot with Memory
 
-![alt-text]()
+![alt-text](https://github.com/Mr-Jack-Tung/A-Very-Simple-Chatbot-UI/blob/main/Screenshot%20_%20a%20very%20simple%20Chatbot%20UI%20with%20Memory%20_%202024-06-23.jpg)
+
+### Screnshot Jun 21, 2024: A very simple Chatbot UI
+
+![alt-text](https://github.com/Mr-Jack-Tung/A-Very-Simple-Chatbot-UI/blob/main/Screenshot%202024-06-21%20_%203.jpg)
+
+
 
 
