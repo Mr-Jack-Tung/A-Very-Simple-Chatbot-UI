@@ -156,7 +156,7 @@
             var message = messageInput.value.trim();
 
             let time_stamp = new Date().toLocaleTimeString('en-US', { hour12: false });
-            if(history.length <= 3) {
+            if(history.length <= 6) {
                 history.push("# user(" + time_stamp + "): " + message);
 
             } else {
@@ -200,7 +200,7 @@
                                 displayMessage('bot', bot_message);
 
                                 let time_stamp = new Date().toLocaleTimeString('en-US', { hour12: false });
-                                if(history.length <= 3) {
+                                if(history.length <= 6) {
                                     history.push("# bot(" + time_stamp + "): " + bot_message);
 
                                 } else {
