@@ -1,4 +1,4 @@
-# A very simple Chatbot UI
+# A very simple HTML & Javascript Chatbot UI
 - Author: Mr. Jack
 - Date: Jun 21, 2024
 
