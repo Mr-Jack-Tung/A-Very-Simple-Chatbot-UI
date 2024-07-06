@@ -1,6 +1,7 @@
 # A very simple HTML & Javascript Chatbot UI
 - Author: Mr. Jack
 - Date: Jun 21, 2024
+- If you like what I do, give me a star ^^ ~> ⭐
 
 "... Qwen2 is trained on data in 29 languages, including English and Chinese. In the 7B models, context length has been extended to 128k tokens." ~> Điều đó có nghĩa là bạn có thể nói chuyện với em chatbot UI tí xíu và rất đơn giản này bằng 29 ngôn ngữ trong đó có tiếng Anh , tiếng Trung và đặc biệt là tiếng Việt cũng rất tốt nhé ^^
 
